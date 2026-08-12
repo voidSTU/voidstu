@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>被擬物｜自我介紹</title>
+
+    <style>
+      :root {
+        --bg: #f5f7fa;
+        --card: rgba(255, 255, 255, 0.85);
+        --text: #1f2937;
+        --subtext: #6b7280;
+        --accent: #4f46e5;
+        --border: #e5e7eb;
+      }
+
+      /* 深色模式 */
+      body.dark {
+        --bg: #111827;
+        --card: rgba(31, 41, 55, 0.9);
+        --text: #f9fafb;
+        --subtext: #9ca3af;
+        --accent: #818cf8;
+        --border: #374151;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+
+        background: var(--bg);
+        color: var(--text);
+
+        transition:
+          background 0.3s ease,
+          color 0.3s ease;
+      }
+
+      /* 深淺色切換按鈕 */
+      .theme-btn {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+
+        width: 48px;
+        height: 48px;
+
+        border: 1px solid var(--border);
+        border-radius: 50%;
+
+        background: var(--card);
+        color: var(--text);
+
+        font-size: 21px;
+        cursor: pointer;
+
+        backdrop-filter: blur(10px);
+
+        transition: 0.25s;
+      }
+
+      .theme-btn:hover {
+        transform: rotate(15deg) scale(1.08);
+      }
+
+      /* 主卡片 */
+      .card {
+        width: min(90%, 650px);
+        padding: 55px 50px;
+
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+
+        backdrop-filter: blur(12px);
+
+        animation: fadeIn 0.8s ease;
+      }
+
+      /* 標籤 */
+      .tag {
+        display: inline-block;
+
+        padding: 7px 14px;
+        margin-bottom: 20px;
+
+        color: var(--accent);
+        background: rgba(79, 70, 229, 0.1);
+
+        border-radius: 999px;
+
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+
+        font-size: clamp(36px, 7vw, 56px);
+        letter-spacing: 2px;
+      }
+
+      .school {
+        margin: 0 0 30px;
+
+        color: var(--subtext);
+        font-size: 18px;
+      }
+
+      .intro {
+        padding: 25px 0;
+
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+
+        font-size: 17px;
+        line-height: 2;
+      }
+
+      .highlight {
+        color: var(--accent);
+        font-weight: bold;
+      }
+
+      .footer {
+        margin-top: 25px;
+
+        color: var(--subtext);
+        font-size: 15px;
+      }
+
+      /* 動畫 */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* 手機版 */
+      @media (max-width: 600px) {
+        .card {
+          padding: 40px 28px;
+        }
+
+        .theme-btn {
+          top: 16px;
+          right: 16px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 深淺色切換 -->
+    <button class="theme-btn" id="themeBtn" aria-label="切換深淺色">🌙</button>
+
+    <main class="card">
+      <div class="tag">115 級新生</div>
+
+      <h1>被擬物</h1>
+
+      <p class="school">松山工農資訊科 → 臺科資工</p>
+
+      <div class="intro">
+        <p>
+          大家好，我來自
+          <span class="highlight">松山工農資訊科</span>，
+          是今年（115）的新生，可以叫我 <span class="highlight">被擬物</span>。
+        </p>
+
+        <p>
+          我沒有競賽經驗，程式方面不是很在行， 也沒什麼專長，走甄選入學來到
+          <span class="highlight">臺科資工</span>。
+        </p>
+
+        <p>還請大家多多指教！</p>
+      </div>
+
+      <div class="footer">Nice to meet you 👋</div>
+    </main>
+
+    <script>
+      const themeBtn = document.getElementById("themeBtn");
+
+      themeBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+
+        if (document.body.classList.contains("dark")) {
+          themeBtn.textContent = "☀️";
+        } else {
+          themeBtn.textContent = "🌙";
+        }
+      });
+    </script>
+  </body>
+</html>
